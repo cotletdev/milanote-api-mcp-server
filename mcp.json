@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "milanote": {
+      "command": "/path/to/milanote-api-mcp-server/.venv/bin/milanote-mcp",
+      "args": ["mcp"]
+    }
+  }
+}
