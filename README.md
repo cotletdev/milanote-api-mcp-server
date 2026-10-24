@@ -1,5 +1,7 @@
 # Milanote API and MCP server, self-hosted
 
+<!-- mcp-name: dev.cotlet/milanote -->
+
 A **Milanote API** and a **Milanote MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. 30 of the 31 Milanote tools we run in production at [Cotlet](https://cotlet.dev/integrations/milanote-api-mcp-server): boards, notes, links, to-do lists with due dates, columns, labels, trash, comments, sharing and export.
 
 Milanote has no public API and no official MCP server. This repo gives you both:
@@ -19,7 +21,7 @@ It is for technical people who want to run it themselves, **for noncommercial us
 uv tool install milanote-api-mcp                  # or: pip install milanote-api-mcp
 milanote-mcp connect                               # reads your Milanote session from Chrome
 milanote-mcp call list_boards
-claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp
+claude mcp add milanote -- uvx milanote-api-mcp mcp
 ```
 
 ## Contents
@@ -69,7 +71,7 @@ uv tool install milanote-api-mcp       # or: pipx install milanote-api-mcp, or: 
 milanote-mcp --version
 ```
 
-MCP clients can also run it with no install: `uvx --from milanote-api-mcp milanote-mcp mcp`.
+MCP clients can also run it with no install: `uvx milanote-api-mcp mcp`.
 
 From source:
 
@@ -153,9 +155,9 @@ The MCP server lists every tool with its input schema, a description written for
 ### Claude Code
 
 ```bash
-claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp
+claude mcp add milanote -- uvx milanote-api-mcp mcp
 # read only:
-claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp --read-only
+claude mcp add milanote -- uvx milanote-api-mcp mcp --read-only
 ```
 
 ### Claude Desktop
@@ -167,7 +169,7 @@ claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp --read-o
   "mcpServers": {
     "milanote": {
       "command": "uvx",
-      "args": ["--from", "milanote-api-mcp", "milanote-mcp", "mcp"]
+      "args": ["milanote-api-mcp", "mcp"]
     }
   }
 }
@@ -184,7 +186,7 @@ claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp --read-o
 ```toml
 [mcp_servers.milanote]
 command = "uvx"
-args = ["--from", "milanote-api-mcp", "milanote-mcp", "mcp"]
+args = ["milanote-api-mcp", "mcp"]
 ```
 
 ### Over HTTP

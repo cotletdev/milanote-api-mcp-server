@@ -3,9 +3,7 @@
     "milanote": {
       "command": "uvx",
       "args": [
-        "--from",
         "milanote-api-mcp",
-        "milanote-mcp",
         "mcp"
       ]
     }
