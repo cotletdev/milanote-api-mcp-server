@@ -66,7 +66,7 @@ Errors come as `<code>: <message>`. `auth_expired` means Milanote signed the ses
 | `milanote_api_mcp/app.py` | app name, domains, session cookie, REST prefix | Rarely |
 | `milanote_api_mcp/core/` | `@tool` declaration, errors, the HTTP client with the session (`context.py`), the account guard | Yes |
 | `milanote_api_mcp/session.py` | reading cookies and the time zone from Chrome over CDP, the session file | Yes |
-| `milanote_api_mcp/runner.py`, `api.py`, `mcp_server.py`, `cli.py` | tool registry, REST API, MCP server, command line | Yes |
+| `milanote_api_mcp/runner.py`, `api.py`, `mcp_server.py`, `mcp_context.py`, `cli.py` | tool registry, REST API, MCP server, its prompts and resources, command line | Yes |
 | `examples/` | scripts for common jobs | Yes |
 
 A new tool is a new file in `milanote_api_mcp/milanote/tools/` with a `@tool(...)` declaration (name, access, input schema, `route`). The registry finds it, and the REST API, the MCP server and the CLI show it without other changes.
