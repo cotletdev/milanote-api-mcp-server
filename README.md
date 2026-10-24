@@ -16,11 +16,10 @@ It is for technical people who want to run it themselves, **for noncommercial us
 [![MCP Badge](https://lobehub.com/badge/mcp/cotletdev-milanote-api-mcp-server)](https://lobehub.com/mcp/cotletdev-milanote-api-mcp-server)
 
 ```bash
-git clone https://github.com/cotletdev/milanote-api-mcp-server.git && cd milanote-api-mcp-server
-python3 -m venv .venv && . .venv/bin/activate && pip install -e .
+uv tool install milanote-api-mcp                  # or: pip install milanote-api-mcp
 milanote-mcp connect                               # reads your Milanote session from Chrome
 milanote-mcp call list_boards
-claude mcp add milanote -- "$PWD/.venv/bin/milanote-mcp" mcp
+claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp
 ```
 
 ## Contents
@@ -63,6 +62,17 @@ Milanote's session cookie lasts about a month. When Milanote signs you out, the 
 
 ## Install
 
+From [PyPI](https://pypi.org/project/milanote-api-mcp/):
+
+```bash
+uv tool install milanote-api-mcp       # or: pipx install milanote-api-mcp, or: pip install milanote-api-mcp
+milanote-mcp --version
+```
+
+MCP clients can also run it with no install: `uvx --from milanote-api-mcp milanote-mcp mcp`.
+
+From source:
+
 ```bash
 git clone https://github.com/cotletdev/milanote-api-mcp-server.git
 cd milanote-api-mcp-server
@@ -76,7 +86,7 @@ With [uv](https://docs.astral.sh/uv/): `uv venv && uv pip install -e .`, then `u
 
 Setting it up with an AI agent (Claude Code, Codex, Cursor)? Open it in this folder and ask it to set up the repo: [`AGENTS.md`](AGENTS.md) tells it every step, and it asks you only for the steps in Chrome.
 
-To update: `git pull && pip install -e .`. We copy every change of the hosted Milanote tools into this repo.
+To update: `uv tool upgrade milanote-api-mcp` (or `pip install -U milanote-api-mcp`), from source `git pull && pip install -e .`. We copy every change of the hosted Milanote tools into this repo.
 
 ## Connect your Chrome
 
@@ -143,9 +153,9 @@ The MCP server lists every tool with its input schema, a description written for
 ### Claude Code
 
 ```bash
-claude mcp add milanote -- /path/to/milanote-api-mcp-server/.venv/bin/milanote-mcp mcp
+claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp
 # read only:
-claude mcp add milanote -- /path/to/milanote-api-mcp-server/.venv/bin/milanote-mcp mcp --read-only
+claude mcp add milanote -- uvx --from milanote-api-mcp milanote-mcp mcp --read-only
 ```
 
 ### Claude Desktop
@@ -156,8 +166,8 @@ claude mcp add milanote -- /path/to/milanote-api-mcp-server/.venv/bin/milanote-m
 {
   "mcpServers": {
     "milanote": {
-      "command": "/path/to/milanote-api-mcp-server/.venv/bin/milanote-mcp",
-      "args": ["mcp"]
+      "command": "uvx",
+      "args": ["--from", "milanote-api-mcp", "milanote-mcp", "mcp"]
     }
   }
 }
@@ -173,8 +183,8 @@ claude mcp add milanote -- /path/to/milanote-api-mcp-server/.venv/bin/milanote-m
 
 ```toml
 [mcp_servers.milanote]
-command = "/path/to/milanote-api-mcp-server/.venv/bin/milanote-mcp"
-args = ["mcp"]
+command = "uvx"
+args = ["--from", "milanote-api-mcp", "milanote-mcp", "mcp"]
 ```
 
 ### Over HTTP

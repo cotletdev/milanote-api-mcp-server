@@ -1,8 +1,13 @@
 {
   "mcpServers": {
     "milanote": {
-      "command": "/path/to/milanote-api-mcp-server/.venv/bin/milanote-mcp",
-      "args": ["mcp"]
+      "command": "uvx",
+      "args": [
+        "--from",
+        "milanote-api-mcp",
+        "milanote-mcp",
+        "mcp"
+      ]
     }
   }
 }
