@@ -2,7 +2,7 @@
 
 The web app sends every change (new card, edit, move to trash, comment) as an `action` event on its socket.io
 connection and waits for the ack `[{"status": 200}]`. The same server answers the polling transport, so the
-this server sends the identical events by plain requests: open (GET), connect (POST "40"), then one POST per event
+tools send the identical events by plain requests: open (GET), connect (POST "40"), then one POST per event
 and GETs until its ack arrives. Element ids are made on the client: base62 seconds, the clientId Milanote hands
 out with every /api/users/me, and a per-client counter.
 """
