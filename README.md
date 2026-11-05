@@ -1,8 +1,36 @@
-# Milanote API and MCP server, self-hosted
+# Milanote API and MCP server: connect Milanote to ChatGPT and Claude
 
 <!-- mcp-name: dev.cotlet/milanote -->
 
-A **Milanote API** and a **Milanote MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. 30 of the 31 Milanote tools we run in production at [Cotlet](https://cotlet.dev/integrations/milanote-api-mcp-server): boards, notes, links, to-do lists with due dates, columns, labels, trash, comments, sharing and export.
+**Yes, ChatGPT, Claude and other AI agents can work in your Milanote account.** That includes Cursor, Codex, OpenClaw and any MCP client, plus automations in n8n, Make and Zapier. Ask in plain words, and the AI adds notes, links and to-do lists to your boards, finds what you saved, sorts cards into columns and exports boards to Markdown. It shows you what it will do first and sends nothing to other people until you say so.
+
+This repo is the missing piece: 30 Milanote tools for AI assistants and scripts.
+
+## What you can ask
+
+> *Put these 12 reference links on the Moodboard sub-board of Brand refresh and skip the ones already there.*
+>
+> *Export my Novel outline board and each chapter sub-board as Markdown into ./outline.*
+>
+> *Here are my call notes. Add the action items as a to-do list on Q1 campaign with the dates we agreed.*
+>
+> *Where did I save that note about the color palette?*
+
+## Two ways to get it
+
+| | [Ready to use, at Cotlet](https://cotlet.dev/integrations/milanote-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=two-ways) | Run it yourself, this repo |
+|---|---|---|
+| For | designers, writers and teams | developers |
+| Setup | sign in to Milanote once, about 5 minutes, nothing to install | Python and a terminal |
+| Works in | ChatGPT and Claude apps, on your phone too, Cursor, Codex, OpenClaw, any MCP client, n8n, Make, Zapier, REST API | Claude Code, Claude Desktop, Cursor, Codex on your computer |
+| Runs | 24/7, your computer can be off | while your computer is on |
+| Price | 7 days free, no card | free |
+
+**[Start free at cotlet.dev →](https://cotlet.dev/signup?app=milanote&utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=top-button)**
+
+## Run it yourself
+
+A **Milanote API** and a **Milanote MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. 30 of the 31 Milanote tools we run in production at [Cotlet](https://cotlet.dev/integrations/milanote-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=intro): boards, notes, links, to-do lists with due dates, columns, labels, trash, comments, sharing and export.
 
 Milanote has no public API and no official MCP server. This repo gives you both:
 
@@ -10,11 +38,11 @@ Milanote has no public API and no official MCP server. This repo gives you both:
 - **REST API** on `http://127.0.0.1:8787/api/v1/milanote`, with OpenAPI docs at `/docs`. [Setup](#rest-api)
 - **Python**: `call("get_board", board_id="1XiqwC1Mir4d4N")`, plus 9 ready scripts in [`examples/`](https://github.com/cotletdev/milanote-api-mcp-server/blob/main/examples/).
 
-It is for technical people who want to run it themselves, **for noncommercial use only** ([license](#license)). If you want it running 24/7 on a server, kept working when Milanote changes its app, for a team or a business, use the [hosted version at cotlet.dev](https://cotlet.dev/integrations/milanote-api-mcp-server).
+Free for your own use, your own business included ([license](#license)).
 
 [![Milanote MCP server](https://img.shields.io/badge/Milanote%20MCP-30%20tools-6d4aef)](#all-30-tools)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-141318)](#requirements)
-[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial-141318)](https://github.com/cotletdev/milanote-api-mcp-server/blob/main/LICENSE)
+[![License: Elastic 2.0](https://img.shields.io/badge/license-Elastic%202.0-141318)](https://github.com/cotletdev/milanote-api-mcp-server/blob/main/LICENSE)
 [![MCP Badge](https://lobehub.com/badge/mcp/cotletdev-milanote-api-mcp-server)](https://lobehub.com/mcp/cotletdev-milanote-api-mcp-server)
 
 ```bash
@@ -26,6 +54,7 @@ claude mcp add milanote -- uvx milanote-api-mcp mcp
 
 ## Contents
 
+- [Questions from Milanote users](#questions-from-milanote-users)
 - [How it works](#how-it-works)
 - [Requirements](#requirements)
 - [Install](#install)
@@ -40,6 +69,44 @@ claude mcp add milanote -- uvx milanote-api-mcp mcp
 - [Self-hosted or hosted](#self-hosted-or-hosted)
 - [FAQ](#faq)
 - [License](#license)
+
+## Questions from Milanote users
+
+**Does Milanote have an API?**
+No. Milanote has no public API, no webhooks and no official MCP server (checked October 2026). A public API and an MCP server are open requests on its public roadmap, and the only way to get content out is the Export button, one board at a time. This repo and [Cotlet](https://cotlet.dev/integrations/milanote-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=faq-api) give you 30 Milanote tools as a REST API and an MCP server.
+
+**Can I get a Milanote API key?**
+Not from Milanote for your own account. With Cotlet you get your own API key that works with your Milanote account, for scripts, n8n, Make, Zapier or any HTTP client. This repo needs no key: it runs on your computer, on your own Milanote session.
+
+**Is there an official ChatGPT integration for Milanote?**
+No. Milanote has no official ChatGPT or Claude connector, and a public API is still an open request on its roadmap. Cotlet is an unofficial one that works today, in the ChatGPT and Claude apps and in any AI agent that takes an MCP server.
+
+**How do I connect Milanote to ChatGPT?**
+Sign up at [cotlet.dev](https://cotlet.dev/signup?app=milanote&utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=faq-chatgpt), sign in to Milanote once in your Cloud Browser there, and add Cotlet to ChatGPT, following the steps in your account. Then ask ChatGPT about your Milanote like you would ask an assistant. ChatGPT needs a server on the internet, so this repo alone, running on your computer, does not connect to ChatGPT.
+
+**Can ChatGPT add notes and to-dos to my Milanote boards?**
+Yes, with Cotlet. Paste your call notes or links, and it adds them to the right board as notes, links or a to-do list with due dates, and skips what is already there.
+
+**Can I search or export my Milanote boards with AI?**
+Yes, with Cotlet. Ask where you saved something, or export a board and its sub-boards as Markdown, for example into Notion or a document.
+
+**Can I automate Milanote with Zapier, Make or n8n?**
+Milanote has no Zapier or Make app. With Cotlet, n8n, Make and Zapier can add notes, links and to-dos to your boards, for example from a form, an email or Slack.
+
+**Can I use it from my phone?**
+Yes, with Cotlet: once it is set up, the ChatGPT and Claude apps on your phone can use Milanote for you.
+
+**Do I need to be technical?**
+For Cotlet, no: you sign in to Milanote and add Cotlet to ChatGPT or Claude, with step-by-step instructions in your account. This repo is for people who are fine with Python and a terminal.
+
+**Is my Milanote account safe?**
+Yes. Neither Cotlet nor this repo sees or stores your Milanote password. You sign in yourself, the way you always do, and the AI works on that signed-in session. Anything that reaches other people asks for your OK first: in Cotlet by default, here through your MCP client.
+
+**Is it free?**
+This repo is free, also in your own business. Cotlet is free for 7 days with no card, then one-time credit packs from $29, no subscription. [Pricing](https://cotlet.dev/pricing?utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=faq-price).
+
+**I manage Milanote for several accounts or clients. Does that work?**
+Yes, with Cotlet. Each Milanote login gets its own connection. Write to [contact@cotlet.dev](mailto:contact@cotlet.dev) and tell us how many accounts you manage.
 
 ## How it works
 
@@ -394,7 +461,7 @@ The REST API answers `{"error": "<code>", "message": "..."}`. The MCP server ret
 
 ## Self-hosted or hosted
 
-| | This repo | [Cotlet, hosted](https://cotlet.dev/integrations/milanote-api-mcp-server) |
+| | This repo | [Cotlet, hosted](https://cotlet.dev/integrations/milanote-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=compare) |
 |---|---|---|
 | Tools | 30 | 31, `upload_image` included |
 | Runs | on your computer, while it is on | in the cloud, 24/7 |
@@ -402,15 +469,12 @@ The REST API answers `{"error": "<code>", "message": "..."}`. The MCP server ret
 | When Milanote changes its app | `git pull` once we have fixed it | fixed for you, every tool tested daily |
 | Approvals | your MCP client asks per call | comments, invites, publishing and trash wait for your OK, switchable per tool |
 | Works with | MCP clients on your machine, local scripts | Claude.ai and ChatGPT connectors, n8n, Make, Zapier, any HTTP client |
-| Who may use it | you, for noncommercial use | teams, businesses, agencies |
+| Who may use it | you and your own business | you, teams, businesses, agencies |
 | Price | free | free 7-day trial with 2,000 credits, no card; then one-time packs from $29 for 5,000 credits |
 
 On the hosted version a successful call uses 10 credits for most tools, failed calls are free, and the Cloud Browser uses 50 credits a day while it has an app enabled for agents. [Full pricing](https://cotlet.dev/pricing).
 
 ## FAQ
-
-**Does Milanote have an official API?**
-No. Milanote has no public API, no webhooks and no official MCP server (checked October 2026). A public API and an MCP server are open requests on its public roadmap, and the only way to get content out is the Export button, one board at a time. Details: [cotlet.dev/integrations/milanote-api-mcp-server](https://cotlet.dev/integrations/milanote-api-mcp-server).
 
 **Is there a Milanote MCP server for Claude, ChatGPT or Cursor?**
 Yes, this one runs on your machine: `milanote-mcp mcp` for Claude Code, Claude Desktop, Cursor and Codex. ChatGPT and Claude.ai connectors need a public HTTPS URL, which the [hosted Milanote MCP server](https://cotlet.dev/integrations/milanote-api-mcp-server) gives you.
@@ -440,20 +504,20 @@ Technically yes, with `MILANOTE_AUTH_TOKEN`. Milanote then sees your session fro
 Requests carry Chrome's fingerprint and go out one at a time, as you would click. Nobody can promise a platform never acts. Keep to your normal use.
 
 **Can I use it at work or for my clients?**
-No, the license allows noncommercial use only. For a team, a company or client work, use [Cotlet](https://cotlet.dev) or write to [contact@cotlet.dev](mailto:contact@cotlet.dev).
+At work and in your own business, yes, free. You may not offer it to others as a hosted or managed service. For client work, use [Cotlet](https://cotlet.dev?utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=faq-clients) or write to [contact@cotlet.dev](mailto:contact@cotlet.dev).
 
 **Is it open source?**
-The source is public, the license is not an open source license: noncommercial use only, no business use.
+The source is public under the Elastic License 2.0: free to use and change, also in your own business, but not to resell as a hosted service.
 
 **A tool broke or I need another one.**
 [Open an issue](https://github.com/cotletdev/milanote-api-mcp-server/issues) with the tool name and the error message.
 
 ## License
 
-[PolyForm Noncommercial License 1.0.0](https://github.com/cotletdev/milanote-api-mcp-server/blob/main/LICENSE). In short:
+[Elastic License 2.0](https://github.com/cotletdev/milanote-api-mcp-server/blob/main/LICENSE). In short:
 
-- **Allowed:** noncommercial use: you, for your own personal purposes with your own Milanote account, or a charity, school, public research or government body. Changing the code, and sharing it under the same license.
-- **Not allowed:** any commercial use, your own business included; client work; selling or offering it, or a service built on it.
+- **Allowed:** using it for yourself and in your own business, free. Changing the code and sharing it under the same license.
+- **Not allowed:** offering it to others as a hosted or managed service, removing the license notices, getting around its limits.
 
 ---
 
@@ -466,4 +530,4 @@ The source is public, the license is not an open source license: noncommercial u
   </a>
 </p>
 
-Maintained by [Cotlet](https://cotlet.dev) ([@cotletdev](https://x.com/cotletdev)). Milanote is a trademark of its owner. This project is unofficial and not affiliated with, endorsed or sponsored by Milanote.
+Maintained by [Cotlet](https://cotlet.dev?utm_source=github&utm_medium=readme&utm_campaign=milanote&utm_content=footer) ([@cotletdev](https://x.com/cotletdev)). Milanote is a trademark of its owner. This project is unofficial and not affiliated with, endorsed or sponsored by Milanote.
