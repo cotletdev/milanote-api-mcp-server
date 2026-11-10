@@ -47,7 +47,7 @@ Free for your own use, your own business included ([license](#license)).
 [![License: Elastic 2.0](https://img.shields.io/badge/license-Elastic%202.0-141318)](https://github.com/cotletdev/milanote-api-mcp-server/blob/main/LICENSE)
 [![MCP Badge](https://lobehub.com/badge/mcp/cotletdev-milanote-api-mcp-server)](https://lobehub.com/mcp/cotletdev-milanote-api-mcp-server)
 
-Also on Odel: https://odel.app/modules/cotlet/milanote
+Also on Odel: https://odel.app/modules/cotlet/milanote and mcpbeat: https://mcpbeat.com/mcp-servers/cotlet/milanote/
 
 ```bash
 uv tool install milanote-api-mcp                  # or: pip install milanote-api-mcp
